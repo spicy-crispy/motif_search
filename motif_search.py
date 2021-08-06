@@ -49,7 +49,7 @@ def count_pattern():
 sort_counter = sorted(count_pattern().items(), key=lambda x: x[1])
 
 pprint(sort_counter)
-print('total proteins that have the motif:', len(sort_counter))
+print('total times this motif appears:', len(sort_counter))
 
 
 
