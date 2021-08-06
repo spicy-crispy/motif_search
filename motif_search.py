@@ -1,7 +1,7 @@
 from pprint import pprint
 import re
 input_file = 'UP000005640_9606.fasta'   # fasta file, i.e. of human proteome
-pattern = 'SSMSGLH'  # motif to search (for AMPK can try 'M.R..S' 'M.R..T' 'L.R..S')
+pattern = 'M.R..T'  # motif to search (for AMPK can try 'M.R..S' 'M.R..T' 'L.R..S')
 k = len(pattern)
 
 # Generates tuples from FASTA file containing (fasta identifier information, protein sequence)
