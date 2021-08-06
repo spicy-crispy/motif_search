@@ -1,10 +1,10 @@
-# Creates tuples from FASTA file containing (fasta identifier information, sequence)
 from pprint import pprint
 import re
-input_file = 'UP000005640_9606.fasta'   # human proteome
-pattern = 'MAA.RDN'
+input_file = 'UP000005640_9606.fasta'   # fasta file, i.e. of human proteome
+pattern = 'SSMSGLH'  # motif to search (for AMPK can try 'M.R..S' 'M.R..T' 'L.R..S')
 k = len(pattern)
 
+# Generates tuples from FASTA file containing (fasta identifier information, protein sequence)
 def fasta_idseq(file_name):
     with open(file_name, 'r') as fhand:
         id = None
@@ -34,7 +34,6 @@ def find_proteins():
                 if item not in found:
                     found.append(item)
     return found
-
 found = find_proteins()
 
 # Counts number of times the pattern shows up in the found proteins containing the pattern.
@@ -46,7 +45,11 @@ def count_pattern():
         counter[i[0]] = match_count
     return counter
 
-print(count_pattern())
+
+sort_counter = sorted(count_pattern().items(), key=lambda x: x[1])
+
+pprint(sort_counter)
+print('total proteins that have the motif:', len(sort_counter))
 
 
 
